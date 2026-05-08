@@ -42,7 +42,7 @@ Upload your CV PDF and get a brutally honest AI-powered assessment of your inter
 ```
 Your CV (PDF)
      ↓
-FastAPI extracts text via Claude (Anthropic)
+FastAPI extracts text via Groq (llama-3.3-70b-versatile)
      ↓
 Firecrawl searches real hiring signals for each target company
      ↓
