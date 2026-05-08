@@ -103,13 +103,17 @@ Open `http://localhost:8000/static/internship.html`
 
 ---
 
+## Live Demo
+
+🚀 **[roast-my-cv.onrender.com/static/internship.html](https://roast-my-cv.onrender.com/static/internship.html)**
+
+> First load may take ~30 seconds (free tier cold start) — worth the wait.
+
 ## Deployment
 
-This project is configured for one-click Railway deployment.
+Deployed on **Render** (free tier). See `RAILWAY.md` for Railway deployment instructions.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app)
-
-See `RAILWAY.md` for full instructions.
+[![Deploy on Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com)
 
 ---
 
