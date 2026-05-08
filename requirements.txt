@@ -1,0 +1,2 @@
+# Railway / Nixpacks: install path is repo root; backend deps live in backend/
+-r backend/requirements.txt

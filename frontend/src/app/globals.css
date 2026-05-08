@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --spacing: 0.25rem;
+
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-subtle: var(--subtle);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
+  --color-red: var(--red);
+  --color-red-deep: var(--red-deep);
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+}
+
+:root {
+  --bg: #0C0C0E;
+  --fg: #F5F0E8;
+  --card: #16161A;
+  --card-hover: #1E1E24;
+  --subtle: #6B6B76;
+  --gold: #F5A623;
+  --gold-dim: #C4841A;
+  --red: #E63946;
+  --red-deep: #B22D37;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+section {
+  overflow-x: clip;
+}
+
+::selection { background: var(--gold); color: black; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--card-hover); border-radius: 3px; }
+
+.font-display { font-family: var(--font-display); }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(245,166,35,0.2), 0 0 60px rgba(245,166,35,0.05);
+}
+.glow-red {
+  box-shadow: 0 0 20px rgba(230,57,70,0.2), 0 0 60px rgba(230,57,70,0.05);
+}
+
+/* Shake for dramatic moments in the call UI */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-4px) rotate(-0.5deg); }
+  20% { transform: translateX(4px) rotate(0.5deg); }
+  30% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  50% { transform: translateX(-2px); }
+  60% { transform: translateX(2px); }
+  70% { transform: translateX(-1px); }
+  80% { transform: translateX(1px); }
+}
+
+/* CSS-only ambient animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15px, -10px) scale(1.02); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-drift { animation: drift 20s ease-in-out infinite; }
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}

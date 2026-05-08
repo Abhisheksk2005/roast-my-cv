@@ -1,0 +1,194 @@
+{
+  "save_roast_quote": {
+    "type": "client",
+    "name": "save_roast_quote",
+    "description": "Save Donald’s best roast line for the report card (from the roast segment only — not from the post-roast AI survival tips). Call this after Phase 4. After this returns, ask the user a follow-up question — don’t leave the conversation hanging.\n",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "execution_mode": "immediate",
+    "assignments": [],
+    "expects_response": false,
+    "response_timeout_secs": 30,
+    "parameters": [
+      {
+        "id": "quote",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Extract Donald’s single best roast one-liner from the monologue he just delivered—the line most likely to be screenshotted. Verbatim from his last roast, as a short string. No session_id.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      }
+    ],
+    "dynamic_variables": {
+      "dynamic_variable_placeholders": {}
+    }
+  },
+  "research_degree": {
+    "type": "client",
+    "name": "research_degree",
+    "description": "Triggers research on the USER'S BACKEND (browser → API → Firecrawl + AI). You do not browse the web yourself. When this tool returns JSON with research_complete true, research is ALREADY DONE — start the roast in your next speech; never ask the user to say research is ready or to confirm the data loaded. The JSON includes safeguard_tips (ordered list of strings = top moves). After the roast, Phase 4: explicitly walk through those moves — explain what to do and briefly why each matters for this user (use ai_risk_reasoning / ai_replacement_risk for context); end with “if you only do one thing…” using the top tip. Then save_roast_quote (roast one-liner only), then follow-ups.\n",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "execution_mode": "immediate",
+    "assignments": [],
+    "expects_response": false,
+    "response_timeout_secs": 300,
+    "parameters": [
+      {
+        "id": "degree",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "From the live transcript: the user’s major, field of study, or degree name exactly as they stated it (e.g. Communications, Computer Science, MBA). If unclear, infer the closest standard label they implied. Never invent a degree they did not describe.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "university",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "From the transcript: the college or university name they said they attended. Use their wording. If they only said a state school, put that phrase—do not make up a specific school name.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "graduation_year",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Four-digit year: use the year they FINISHED if already graduated; if still in school, use EXPECTED graduation year (future year is OK). If unknown, use 0. Digits only when possible so the client can coerce to a number.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "current_job",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Their situation: job title if working (e.g. marketing coordinator), or student / undergrad / grad student if still in school, or the career they want if job hunting. Not the employer name unless that is all they gave.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "name",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Their first name or how they asked to be called, if mentioned; otherwise empty string.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "current_company",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Employer or company name if they said it; otherwise empty string.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "salary",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Annual salary in USD as a whole number if they stated it or a clear range (use midpoint). If not discussed, empty string. Do not fabricate.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "years_experience",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Total years in this role or field they mentioned, as digits if possible. If not stated, empty string.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "country_or_region",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Where they work or live if they said it (e.g. UK, London, Germany, Texas). Empty if unknown. Drives local salary/tuition search.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "currency_code",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "ISO 4217 code matching how they stated money: GBP if pounds/£/UK salary; EUR for euros; USD for dollars/US. Examples: £60k or 60k in the UK → GBP; $80k US → USD. Default USD only if clearly US or ambiguous dollar.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "tuition_paid",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Total tuition/fees they paid or are paying for the degree (whole number in major units of currency_code). Ask directly if missing. If they only give annual fees, put that number here and set tuition_is_total to false. Empty string if they refuse — backend will still search.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "tuition_is_total",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "true if tuition_paid is total degree cost; false if it is annual/per-year fees (UK/US scaling is applied server-side). Default true.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "source",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Always the literal word: voice",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      }
+    ],
+    "dynamic_variables": {
+      "dynamic_variable_placeholders": {}
+    }
+  }
+}

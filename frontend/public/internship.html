@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROAST MY CV | Know Your Shot</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23131313'/><text y='.9em' font-size='78' x='10'>🔥</text></svg>"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500&family=Space+Grotesk:wght@700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-surface-variant":"#debecd","on-primary":"#610048","surface":"#131313","on-secondary-container":"#6f5c00","secondary-container":"#fdd400","surface-container":"#20201f","on-tertiary-container":"#003033","on-tertiary":"#00363a","background":"#131313","primary":"#ffaedb","surface-container-high":"#2a2a2a","error-container":"#93000a","primary-container":"#ff3ac6","on-primary-container":"#560040","tertiary-container":"#00a1ab","surface-container-highest":"#353535","outline":"#a68997","error":"#ffb4ab","on-surface":"#e5e2e1","on-error":"#690005","on-error-container":"#ffdad6","outline-variant":"#57404c","tertiary":"#00dbe9","secondary":"#fff3d2","on-background":"#e5e2e1"},spacing:{"margin-page":"40px","gutter":"24px","stack-lg":"96px","stack-md":"48px","stack-sm":"24px"},fontFamily:{"headline-lg":["Epilogue"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-caps":["Space Grotesk"],"headline-xl":["Epilogue"],"headline-md":["Epilogue"]},fontSize:{"headline-lg":["48px",{lineHeight:"52px",letterSpacing:"-0.02em",fontWeight:"800"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"500"}],"label-caps":["14px",{lineHeight:"18px",letterSpacing:"0.1em",fontWeight:"700"}],"headline-xl":["80px",{lineHeight:"88px",letterSpacing:"-0.04em",fontWeight:"900"}],"headline-md":["32px",{lineHeight:"38px",fontWeight:"700"}]}}}}
+</script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+  .industrial-grid{background-image:radial-gradient(circle,#353535 1px,transparent 1px);background-size:24px 24px}
+  .pipe-gradient{background:linear-gradient(90deg,transparent 0%,#ffaedb 50%,transparent 100%)}
+  .neo-shadow{box-shadow:4px 4px 0px 0px rgba(0,0,0,1)}
+  .neo-shadow-lg{box-shadow:8px 8px 0px 0px rgba(0,0,0,1)}
+  .neo-shadow-pink{box-shadow:6px 6px 0px 0px #ff3ac6}
+  .neo-shadow-teal{box-shadow:8px 8px 0px 0px #00dbe9}
+  .neo-shadow-yellow{box-shadow:6px 6px 0px 0px #fdd400}
+  input,select{background:#1c1b1b;border:2px solid #e5e2e1;color:#e5e2e1;padding:9px 13px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;width:100%;outline:none;transition:border-color .15s}
+  input:focus,select:focus{border-color:#00dbe9}
+  input::placeholder{color:#57404c}
+  select option{background:#1c1b1b}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .spin{animation:spin 1s linear infinite}
+  @keyframes pulse-txt{0%,100%{opacity:1}50%{opacity:.3}}
+  .pulse-txt{animation:pulse-txt 1.8s ease-in-out infinite}
+  .verdict-realistic{background:#003033;color:#7df4ff}
+  .verdict-reach{background:#3a3000;color:#fdd400}
+  .verdict-cooked{background:#93000a;color:#ffdad6}
+  .custom-scrollbar::-webkit-scrollbar{width:6px}
+  .custom-scrollbar::-webkit-scrollbar-track{background:#131313}
+  .custom-scrollbar::-webkit-scrollbar-thumb{background:#353535;border-radius:3px}
+  .drop-zone-active{border-color:#ffaedb!important;background:#20201f!important}
+  /* Results full-screen mode */
+  #page-tool.results-mode aside { display:none!important; }
+  #page-tool.results-mode #left-panel { display:none!important; }
+  #page-tool.results-mode #submit-card { display:none!important; }
+  #page-tool.results-mode #right-panel { width:100%!important; max-width:860px; margin:0 auto; }
+  #page-tool.results-mode .split-wrap { justify-content:center; }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md industrial-grid min-h-screen overflow-x-hidden">
+
+<!-- ─── TOP APP BAR ─────────────────────────────── -->
+<header class="fixed top-0 w-full z-50 border-b-4 border-on-surface bg-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex justify-between items-center px-margin-page h-20">
+  <div class="flex items-center gap-3">
+    <span class="material-symbols-outlined text-primary text-headline-md" style="font-variation-settings:'FILL' 1">local_fire_department</span>
+    <span class="font-headline-md text-headline-md font-black text-primary tracking-tighter">ROAST MY CV</span>
+  </div>
+  <nav class="hidden md:flex gap-8 items-center">
+    <a id="nav-roast" onclick="showPage('landing')" class="font-label-caps text-label-caps text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all cursor-pointer">Roast</a>
+    <a id="nav-matches" onclick="showPage('matches')" class="font-label-caps text-label-caps text-on-surface hover:text-primary transition-colors cursor-pointer">Matches</a>
+    </div>
+  </nav>
+  <!-- Mobile hamburger -->
+  <button class="md:hidden material-symbols-outlined text-on-surface text-headline-md">menu</button>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     PAGE: LANDING
+════════════════════════════════════════════════ -->
+<div id="page-landing">
+<main class="pt-32 pb-24 px-margin-page max-w-7xl mx-auto space-y-stack-lg">
+
+  <!-- ── HERO ─────────────────────────────────── -->
+  <section class="flex flex-col items-center text-center space-y-stack-md">
+    <div class="inline-block bg-tertiary-container text-on-tertiary-container font-label-caps text-label-caps px-4 py-1 border-2 border-on-surface neo-shadow">
+      BETA v2.4: MAXIMUM SPICINESS
+    </div>
+    <h1 class="font-headline-xl text-headline-xl leading-tight">
+      Pure <span class="text-primary italic">Potential</span> or Pure <span class="text-tertiary">Nonsense?</span>
+    </h1>
+    <div class="pt-4">
+      <button onclick="showPage('tool')" class="bg-primary-container text-on-primary-container font-headline-md text-headline-md px-12 py-6 border-4 border-on-surface neo-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none active:scale-95 transition-all uppercase">
+        GET ROASTED
+      </button>
+    </div>
+  </section>
+
+  <!-- ── READY TO ENTER ────────────────────────── -->
+  <section class="bg-secondary-container text-on-secondary-container border-4 border-on-surface p-margin-page relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 opacity-20 pointer-events-none">
+      <span class="material-symbols-outlined text-[200px]" style="font-variation-settings:'FILL' 1">settings</span>
+    </div>
+    <div class="relative z-10 max-w-2xl">
+      <h2 class="font-headline-lg text-headline-lg mb-6 uppercase">Ready to enter the machine?</h2>
+      <p class="font-body-lg text-body-lg mb-8 opacity-80">Upload your PDF. Choose your heat level. Prepare for the truth. It's 100% free, 100% savage, and 100% effective at getting you hired.</p>
+      <div class="bg-surface p-8 border-4 border-on-surface neo-shadow flex flex-col md:flex-row gap-6 items-center">
+        <div class="flex-grow w-full">
+          <label class="block font-label-caps text-label-caps mb-2 text-on-surface">DROP CV HERE (.PDF)</label>
+          <div onclick="showPage('tool')" class="border-2 border-dashed border-outline p-6 text-center hover:bg-surface-container transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-headline-md mb-2 text-on-surface-variant block">upload_file</span>
+            <p class="text-xs uppercase opacity-40">Drag and drop or click to browse</p>
+          </div>
+        </div>
+        <button onclick="showPage('tool')" class="w-full md:w-auto bg-primary-container text-on-primary-container font-headline-md text-headline-md px-10 py-10 border-4 border-on-surface neo-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all flex items-center justify-center">
+          ROAST ME!
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ───────────────────────────── -->
+  <section class="space-y-stack-md py-12">
+    <div class="text-center space-y-4 mb-16">
+      <h5 class="font-label-caps text-label-caps text-primary tracking-[0.2em] uppercase">How It Works</h5>
+      <h2 class="font-headline-lg text-headline-lg">Three beats. One game plan.</h2>
+    </div>
+    <div class="relative max-w-5xl mx-auto">
+      <div class="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-[2px] bg-outline-variant"></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+        <div class="flex flex-col items-center text-center group">
+          <div class="relative mb-8">
+            <div class="w-32 h-32 bg-surface-container border-4 border-on-surface flex items-center justify-center neo-shadow-pink transition-transform group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-primary" style="font-size:48px">description</span>
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-on-surface text-surface font-black flex items-center justify-center text-sm border-2 border-surface">1</div>
+          </div>
+          <h4 class="font-headline-md text-[24px] mb-2 uppercase italic">YOUR CV</h4>
+          <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Dream Company · CV · vibe</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div class="relative mb-8">
+            <div class="w-32 h-32 bg-surface-container border-4 border-on-surface flex items-center justify-center neo-shadow-teal transition-transform group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-tertiary" style="font-size:48px">trending_down</span>
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-on-surface text-surface font-black flex items-center justify-center text-sm border-2 border-surface">2</div>
+          </div>
+          <h4 class="font-headline-md text-[24px] mb-2 uppercase italic">Donald digs</h4>
+          <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Matches · CV Compatibility · market</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div class="relative mb-8">
+            <div class="w-32 h-32 bg-surface-container border-4 border-on-surface flex items-center justify-center neo-shadow transition-transform group-hover:-translate-y-1">
+              <span class="material-symbols-outlined text-secondary-container" style="font-size:48px">gavel</span>
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-on-surface text-surface font-black flex items-center justify-center text-sm border-2 border-surface">3</div>
+          </div>
+          <h4 class="font-headline-md text-[24px] mb-2 uppercase italic">Roast + game plan</h4>
+          <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Verdict · Starting moves</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────── -->
+  <footer class="border-t-4 border-on-surface pt-12">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">local_fire_department</span>
+          <span class="font-headline-md text-headline-md font-black text-primary tracking-tighter">ROAST MY CV</span>
+        </div>
+        <p class="font-body-md text-on-surface-variant max-w-xs text-sm">Building better careers through professional-grade bullying since 2026.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-12 text-sm">
+        <div class="space-y-3">
+          <h5 class="font-label-caps text-label-caps text-tertiary">RESOURCES</h5>
+          <ul class="space-y-2 font-bold opacity-80 uppercase text-[12px]">
+            <li><a class="hover:text-primary" href="#">Templates</a></li>
+            <li><a class="hover:text-primary" href="#">The Fam</a></li>
+            <li><a class="hover:text-primary" href="#">Hire Us</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h5 class="font-label-caps text-label-caps text-tertiary">LEGAL</h5>
+          <ul class="space-y-2 font-bold opacity-80 uppercase text-[12px]">
+            <li><a class="hover:text-primary" href="#">Privacy</a></li>
+            <li><a class="hover:text-primary" href="#">Terms</a></li>
+            <li><a class="hover:text-primary" href="#">No Tears Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t-2 border-surface-variant flex flex-col md:flex-row justify-between items-center text-[10px] uppercase font-black tracking-widest opacity-40 gap-4">
+      <span>© 2026 Abhishek Kinjawadekar</span>
+      <span>DESIGNED BY THE GOAT</span>
+    </div>
+  </footer>
+
+</main>
+</div><!-- end page-landing -->
+
+<!-- ════════════════════════════════════════════════
+     PAGE: ROAST TOOL
+════════════════════════════════════════════════ -->
+<div id="page-tool" class="hidden">
+<main class="pt-28 pb-margin-page px-margin-page max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row gap-gutter relative">
+
+  <!-- SIDEBAR -->
+  <aside class="hidden lg:flex flex-col h-fit w-72 border-r-4 border-on-surface bg-surface p-6 shadow-[8px_0px_0px_0px_#ffaedb] sticky top-28">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-14 h-14 border-2 border-on-surface bg-primary-container flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-primary-container text-headline-md" style="font-variation-settings:'FILL' 1">school</span>
+      </div>
+      <div>
+        <h3 class="font-body-lg font-bold text-tertiary">Intern Hopeful</h3>
+        <p class="text-sm text-on-surface-variant font-label-caps">REALITY CHECK MODE</p>
+      </div>
+    </div>
+    <nav class="flex flex-col gap-1">
+      <a class="flex items-center gap-3 bg-tertiary-container text-on-tertiary-container font-bold border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-3 px-4">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">whatshot</span>
+        <span class="font-body-lg">Get Roasted</span>
+      </a>
+      <a onclick="showPage('landing')" class="flex items-center gap-3 text-on-surface py-3 px-4 hover:bg-primary hover:text-on-primary transition-all cursor-pointer mt-8">
+        <span class="material-symbols-outlined">home</span><span class="font-body-lg">Back to Home</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- SPLIT SCREEN -->
+  <div id="split-wrap" class="split-wrap flex-1 flex flex-col md:flex-row gap-gutter">
+
+    <!-- ══ LEFT PANEL ══════════════════════════════ -->
+    <section id="left-panel" class="w-full md:w-1/2 flex flex-col gap-6">
+
+      <!-- FEED THE BEAST card -->
+      <div class="bg-surface border-4 border-on-surface p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+        <div class="absolute -right-4 -top-4 w-24 h-24 bg-primary rotate-12 flex items-center justify-center border-4 border-on-surface">
+          <span class="material-symbols-outlined text-on-primary text-4xl">priority_high</span>
+        </div>
+        <h2 class="font-headline-md text-headline-md text-primary mb-2">FEED THE BEAST</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-6">Sacrifice your CV to the internship incinerator.</p>
+
+        <!-- STEP 1: UPLOAD ZONE -->
+        <div id="left-upload">
+          <input type="file" id="cv-file-input" accept=".pdf" class="hidden"/>
+          <div id="drop-zone"
+            class="border-4 border-dashed border-on-surface-variant bg-surface-container p-12 flex flex-col items-center justify-center gap-4 group cursor-pointer hover:bg-surface-container-high transition-colors"
+            onclick="document.getElementById('cv-file-input').click()"
+            ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
+            <span class="material-symbols-outlined text-6xl text-on-surface-variant group-hover:scale-110 transition-transform">upload_file</span>
+            <p class="font-label-caps text-label-caps text-on-surface-variant">DROP CV PDF OR CLICK TO SCAN</p>
+            <div class="flex gap-4 mt-2">
+              <button type="button" onclick="event.stopPropagation();document.getElementById('cv-file-input').click()"
+                class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all">
+                BROWSE FILE
+              </button>
+              <button type="button" onclick="event.stopPropagation();showManualForm()"
+                class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-6 py-3 border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">edit_note</span> TYPE MANUALLY
+              </button>
+            </div>
+          </div>
+          <div class="mt-6 h-4 w-full bg-surface-container-highest border-2 border-on-surface rounded-full overflow-hidden relative">
+            <div class="pipe-gradient absolute inset-0 w-1/3 animate-pulse"></div>
+          </div>
+          <div class="flex justify-between mt-2 font-label-caps text-[10px] text-on-surface-variant">
+            <span>PRESSURE: NOMINAL</span><span>FUEL: 100% TRUTH</span>
+          </div>
+        </div>
+
+        <!-- STEP 2: SMART FORM (shown after CV upload) -->
+        <div id="left-form" class="hidden">
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-tertiary" style="font-variation-settings:'FILL' 1">task_alt</span>
+              <span id="cv-source-label" class="font-label-caps text-label-caps text-tertiary">CV EXTRACTED</span>
+            </div>
+            <button type="button" onclick="resetToUpload()"
+              class="font-label-caps text-[11px] text-on-surface-variant hover:text-primary flex items-center gap-1">
+              <span class="material-symbols-outlined" style="font-size:14px">restart_alt</span> START OVER
+            </button>
+          </div>
+
+          <!-- Extracted profile chips -->
+          <div id="extracted-chips" class="flex flex-wrap gap-2 mb-4 p-3 bg-surface-container border-2 border-on-surface"></div>
+
+          <!-- Hidden fields (always store values even if not shown) -->
+          <form id="roast-form">
+            <input id="major" type="hidden"/>
+            <input id="university" type="hidden"/>
+            <input id="cgpa" type="hidden"/>
+            <input id="year_of_study" type="hidden"/>
+            <input id="skills" type="hidden"/>
+            <input id="experience" type="hidden"/>
+            <input id="country_or_region" type="hidden"/>
+
+            <!-- Missing fields injected here dynamically -->
+            <div id="missing-fields" class="space-y-3 mb-4"></div>
+
+            <!-- Target companies — always shown -->
+            <div class="mb-3">
+              <label class="block font-label-caps text-[11px] text-primary mb-1">TARGET COMPANIES *</label>
+              <input id="target_companies" type="text" placeholder="e.g. Google, Stripe, Flipkart" required/>
+              <p class="font-label-caps text-[10px] text-outline mt-1">Comma-separated · We'll also suggest more companies in your results</p>
+            </div>
+
+            <!-- Edit all toggle -->
+            <button type="button" onclick="toggleAllFields()"
+              class="font-label-caps text-[10px] text-on-surface-variant hover:text-tertiary flex items-center gap-1 mb-3">
+              <span id="edit-toggle-icon" class="material-symbols-outlined" style="font-size:13px">expand_more</span>
+              <span id="edit-toggle-label">EDIT EXTRACTED DETAILS</span>
+            </button>
+
+            <!-- All editable fields (hidden by default after CV upload) -->
+            <div id="all-fields" class="hidden space-y-3">
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">MAJOR</label>
+                  <input id="major-edit" type="text" placeholder="Computer Science"/>
+                </div>
+                <div>
+                  <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">UNIVERSITY</label>
+                  <input id="university-edit" type="text" placeholder="NUS, IIT…"/>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">CGPA</label>
+                  <input id="cgpa-edit" type="number" placeholder="8.2" step="0.01" min="0" max="10"/>
+                </div>
+                <div>
+                  <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">YEAR</label>
+                  <select id="year-edit">
+                    <option value="">— Year —</option>
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">SKILLS</label>
+                <input id="skills-edit" type="text" placeholder="Python, React, SQL…"/>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">COUNTRY</label>
+                  <input id="country-edit" type="text" placeholder="India, UK, SG…"/>
+                </div>
+                <div>
+                  <label class="block font-label-caps text-[11px] text-on-surface-variant mb-1">EXPERIENCE</label>
+                  <input id="experience-edit" type="text" placeholder="Projects, internships…"/>
+                </div>
+              </div>
+            </div>
+
+            <div id="form-error" class="hidden border-2 border-error p-3 mt-2" style="background:#93000a">
+              <span id="form-error-msg" class="font-label-caps text-[11px] text-on-error-container"></span>
+            </div>
+          </form>
+        </div>
+      </div><!-- end FEED THE BEAST -->
+
+      <!-- Submit card -->
+      <div id="submit-card" class="hidden bg-secondary-container border-4 border-on-surface p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center gap-6">
+        <div class="bg-on-surface w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h4 class="font-label-caps text-label-caps text-on-secondary-container">ALGORITHM IS READY</h4>
+          <p class="font-body-md text-on-secondary-container opacity-80 text-sm">Fed on 10k failed applications. Hungry.</p>
+        </div>
+        <button onclick="submitForm()"
+          class="bg-primary-container text-on-primary-container font-headline-md px-8 py-4 border-4 border-on-surface neo-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none active:scale-95 transition-all flex-shrink-0"
+          style="font-size:18px">
+          ROAST ME!
+        </button>
+      </div>
+
+    </section><!-- end LEFT -->
+
+    <!-- ══ RIGHT PANEL ══════════════════════════════ -->
+    <section id="right-panel" class="w-full md:w-1/2 flex flex-col gap-6">
+
+      <!-- PARSING SPINNER -->
+      <div id="panel-parsing" class="hidden flex flex-col gap-6">
+        <div class="bg-surface-container-high border-4 border-on-surface p-8 shadow-[8px_8px_0px_0px_#fdd400] flex flex-col items-center gap-6">
+          <div class="flex justify-between items-start w-full">
+            <h2 class="font-headline-md text-headline-md text-secondary-container">SCANNING CV</h2>
+            <span class="bg-secondary-container text-on-secondary-container font-label-caps text-xs px-3 py-1 border-2 border-on-surface">READING</span>
+          </div>
+          <div class="relative w-20 h-20 my-2">
+            <div class="absolute inset-0 border-8 border-on-surface rounded-full"></div>
+            <div class="absolute inset-0 border-8 border-t-secondary-container border-r-transparent border-b-transparent border-l-transparent rounded-full spin"></div>
+            <div class="absolute inset-3 flex items-center justify-center">
+              <span class="material-symbols-outlined text-secondary-container text-3xl" style="font-variation-settings:'FILL' 1">description</span>
+            </div>
+          </div>
+          <p class="pulse-txt font-label-caps text-label-caps text-secondary-container text-center">EXTRACTING YOUR PROFILE...</p>
+          <p class="font-label-caps text-[11px] text-on-surface-variant text-center">Reading your CV · Pulling skills, CGPA, experience...</p>
+        </div>
+      </div>
+
+      <!-- IDLE -->
+      <div id="panel-idle" class="flex flex-col gap-6">
+        <div class="bg-surface-container-high border-4 border-on-surface p-8 shadow-[8px_8px_0px_0px_#00dbe9]">
+          <div class="flex justify-between items-start mb-6">
+            <h2 class="font-headline-md text-headline-md text-tertiary">OVEN STATUS</h2>
+            <span class="bg-error text-on-error font-label-caps text-xs px-3 py-1 border-2 border-on-surface">PRE-HEATING</span>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">check_circle</span>
+              <p class="font-body-md">Internship requirements database loaded...</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-tertiary">check_circle</span>
+              <p class="font-body-md">Company hiring bar scanner: ready...</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-on-surface-variant animate-spin">refresh</span>
+              <p class="font-body-md text-primary font-bold">Waiting for your CV...</p>
+            </div>
+          </div>
+          <div class="mt-8 bg-surface-container p-5 border-2 border-on-surface">
+            <h3 class="font-label-caps text-label-caps text-primary mb-3 text-center">SPICY METER</h3>
+            <div class="flex gap-2 h-10">
+              <div class="flex-1 bg-secondary-container border-2 border-on-surface"></div>
+              <div class="flex-1 bg-secondary-container border-2 border-on-surface"></div>
+              <div class="flex-1 bg-primary-container border-2 border-on-surface"></div>
+              <div class="flex-1 bg-primary-container border-2 border-on-surface animate-pulse"></div>
+              <div class="flex-1 bg-surface-container-highest border-2 border-on-surface"></div>
+            </div>
+            <div class="flex justify-between mt-2 font-label-caps text-[10px] text-on-surface-variant">
+              <span>MILD</span><span>MEDIUM</span><span>INFERNO</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface border-4 border-on-surface p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center text-center min-h-40">
+          <span class="material-symbols-outlined text-headline-lg text-on-surface-variant opacity-20 mb-3" style="font-variation-settings:'FILL' 1">bolt</span>
+          <h2 class="font-headline-md text-headline-md text-on-surface-variant opacity-30">THE VERDICT</h2>
+          <p class="font-body-lg text-on-surface-variant opacity-40 max-w-xs mt-2">Upload your CV and hit ROAST ME to see the truth.</p>
+        </div>
+      </div>
+
+      <!-- ROAST LOADING -->
+      <div id="panel-loading" class="hidden flex flex-col gap-6">
+        <div class="bg-surface-container-high border-4 border-on-surface p-8 shadow-[8px_8px_0px_0px_#00dbe9] flex flex-col items-center gap-6">
+          <div class="flex justify-between items-start w-full">
+            <h2 class="font-headline-md text-headline-md text-tertiary">OVEN STATUS</h2>
+            <span class="bg-secondary-container text-on-secondary-container font-label-caps text-xs px-3 py-1 border-2 border-on-surface">RUNNING HOT</span>
+          </div>
+          <div class="relative w-20 h-20 my-2">
+            <div class="absolute inset-0 border-8 border-on-surface rounded-full"></div>
+            <div class="absolute inset-0 border-8 border-t-primary-container border-r-transparent border-b-transparent border-l-transparent rounded-full spin"></div>
+            <div class="absolute inset-3 flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings:'FILL' 1">local_fire_department</span>
+            </div>
+          </div>
+          <p id="loading-msg" class="pulse-txt font-label-caps text-label-caps text-primary text-center">PULLING RECEIPTS...</p>
+          <div id="loading-companies" class="w-full space-y-2 bg-surface-container p-4 border-2 border-on-surface"></div>
+          <p class="font-label-caps text-[11px] text-on-surface-variant text-center">15–45 sec · don't close this tab</p>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="panel-results" class="hidden flex flex-col gap-6 overflow-y-auto custom-scrollbar pb-4" style="max-height:calc(100vh - 140px)">
+        <div class="bg-surface-container-highest border-4 border-on-surface p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <div class="flex items-end gap-3 mb-3">
+            <p id="score-num" class="font-headline-xl" style="line-height:1;letter-spacing:-.04em;font-size:clamp(56px,10vw,90px)">0</p>
+            <p class="font-headline-md text-on-surface-variant pb-2">/100</p>
+            <div id="score-badge" class="ml-auto border-2 px-3 py-1 font-label-caps text-[11px]"></div>
+          </div>
+          <div class="h-4 w-full border-2 border-on-surface bg-surface-container overflow-hidden mb-4">
+            <div id="score-bar" class="h-full transition-all duration-1000" style="width:0%"></div>
+          </div>
+          <div class="border-l-4 border-primary p-4 bg-surface">
+            <p class="font-label-caps text-[11px] text-outline mb-1">THE HONEST TAKE</p>
+            <p id="honest-take" class="font-body-lg text-primary" style="font-style:italic"></p>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-headline-md text-headline-md mb-3 flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">business_center</span>
+            COMPANY VERDICTS
+          </h3>
+          <div id="verdicts-list" class="space-y-4"></div>
+        </div>
+        <!-- Bright spots -->
+        <div id="bright-spots-section" class="hidden">
+          <h3 class="font-headline-md text-headline-md mb-3 flex items-center gap-3">
+            <span class="material-symbols-outlined" style="color:#aaffdd;font-variation-settings:'FILL' 1">star</span>
+            <span style="color:#aaffdd">WHAT YOU ACTUALLY GOT</span>
+          </h3>
+          <div id="bright-spots-wrap" class="space-y-2"></div>
+        </div>
+
+        <div>
+          <h3 class="font-headline-md text-headline-md mb-3 flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-container">build</span>
+            TOP SKILL GAPS
+          </h3>
+          <div id="gaps-wrap" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div>
+          <h3 class="font-headline-md text-headline-md mb-3 flex items-center gap-3">
+            <span class="material-symbols-outlined text-tertiary">rocket_launch</span>
+            NEXT MOVES
+          </h3>
+          <div id="tips-list" class="space-y-3"></div>
+        </div>
+        <!-- Recommended companies -->
+        <div id="recommended-section" class="hidden">
+          <h3 class="font-headline-md text-headline-md mb-3 flex items-center gap-3">
+            <span class="material-symbols-outlined text-secondary-container" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+            DONALD SAYS APPLY HERE
+          </h3>
+          <p class="font-label-caps text-[10px] text-on-surface-variant mb-3" style="letter-spacing:.06em">BASED ON YOUR ACTUAL CV — NOT WHAT YOU LISTED</p>
+          <div id="recommended-list" class="flex flex-col gap-3"></div>
+        </div>
+
+        <!-- Voice button -->
+        <div id="voice-bar" class="bg-surface-container border-4 border-on-surface p-4 shadow-[8px_8px_0px_0px_#aaffdd] flex items-center gap-4">
+          <div class="flex-1">
+            <p class="font-label-caps text-[11px] text-aaffdd" style="color:#aaffdd">🎙 HEAR YOUR ROAST</p>
+            <p class="font-label-caps text-[10px] text-on-surface-variant mt-1">ElevenLabs will read it out loud</p>
+          </div>
+          <button id="voice-btn" onclick="playRoast()"
+            class="flex items-center gap-2 px-6 py-3 border-2 border-on-surface font-label-caps text-label-caps active:translate-x-1 active:translate-y-1 active:shadow-none transition-all"
+            style="background:#aaffdd;color:#001a0f;box-shadow:4px 4px 0 0 #000">
+            <span id="voice-icon" class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">volume_up</span>
+            <span id="voice-label">PLAY ROAST</span>
+          </button>
+          <audio id="roast-audio"></audio>
+        </div>
+
+        <button onclick="fullReset()"
+          class="w-full border-4 border-on-surface neo-shadow-teal hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none active:scale-95 transition-all py-4 font-headline-md"
+          style="background:#131313;color:#00dbe9;font-size:18px">
+          ← ROAST ANOTHER CV
+        </button>
+      </div>
+
+    </section><!-- end RIGHT -->
+  </div><!-- end split -->
+</div>
+</main>
+</div><!-- end page-tool -->
+
+<!-- ════════════════════════════════════════════════
+     PAGE: MATCHES
+════════════════════════════════════════════════ -->
+<div id="page-matches" class="hidden">
+<main class="pt-28 pb-24 px-margin-page max-w-4xl mx-auto">
+
+  <div class="flex items-center gap-4 mb-2">
+    <span class="material-symbols-outlined text-secondary-container text-headline-md" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+    <h1 class="font-headline-lg text-headline-lg">YOUR MATCHES</h1>
+  </div>
+  <p class="font-label-caps text-[11px] text-on-surface-variant mb-8" style="letter-spacing:.08em">DONALD'S HONEST RECOMMENDATIONS BASED ON YOUR CV</p>
+
+  <!-- Empty state -->
+  <div id="matches-empty" class="border-4 border-on-surface bg-surface-container p-12 text-center neo-shadow flex flex-col items-center gap-6">
+    <span class="material-symbols-outlined text-primary" style="font-size:64px;font-variation-settings:'FILL' 1">search_off</span>
+    <div>
+      <h2 class="font-headline-md text-headline-md mb-2">No matches yet</h2>
+      <p class="font-body-md text-on-surface-variant">Upload your CV and get roasted first — Donald will pick your best-fit companies from the results.</p>
+    </div>
+    <button onclick="showPage('tool')" class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-8 py-3 border-4 border-on-surface neo-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all">
+      GET ROASTED FIRST →
+    </button>
+  </div>
+
+  <!-- Matches grid — populated after roast -->
+  <div id="matches-grid" class="hidden space-y-4"></div>
+
+  <!-- Back button -->
+  <div id="matches-back" class="hidden mt-8">
+    <button onclick="showPage('tool')" class="border-4 border-on-surface px-6 py-3 font-label-caps text-label-caps neo-shadow-teal hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all" style="background:#131313;color:#00dbe9">
+      ← BACK TO RESULTS
+    </button>
+  </div>
+
+</main>
+</div><!-- end page-matches -->
+
+<!-- ─── MOBILE BOTTOM NAV ─────────────────────── -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container border-t-4 border-on-surface">
+  <button onclick="showPage('landing')" class="flex flex-col items-center text-on-surface-variant p-2">
+    <span class="material-symbols-outlined">home</span>
+    <span class="font-label-caps text-[10px]">Home</span>
+  </button>
+  <button onclick="showPage('tool')" class="flex flex-col items-center bg-secondary-container text-on-secondary-container rounded-xl p-2 border-2 border-on-surface neo-shadow">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">fireplace</span>
+    <span class="font-label-caps text-[10px]">Roast</span>
+  </button>
+  <button onclick="showPage('matches')" class="flex flex-col items-center text-on-surface-variant p-2">
+    <span class="material-symbols-outlined">auto_awesome</span>
+    <span class="font-label-caps text-[10px]">Matches</span>
+  </button>
+  <button class="flex flex-col items-center text-on-surface-variant p-2">
+    <span class="material-symbols-outlined">person</span>
+    <span class="font-label-caps text-[10px]">Profile</span>
+  </button>
+</footer>
+
+<!-- ─── JAVASCRIPT ────────────────────────────── -->
+<script>
+/* ── Page switching ── */
+function showPage(name){
+  document.getElementById('page-landing').classList.toggle('hidden', name!=='landing');
+  document.getElementById('page-tool').classList.toggle('hidden', name!=='tool');
+  document.getElementById('page-matches').classList.toggle('hidden', name!=='matches');
+  if(name==='landing') document.getElementById('page-tool').classList.remove('results-mode');
+  // Highlight active nav
+  document.getElementById('nav-roast').style.color = name==='landing' ? '#ffaedb' : '';
+  document.getElementById('nav-matches').style.color = name==='matches' ? '#ffaedb' : '';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── Panel helpers ── */
+function setRight(id){
+  ['panel-idle','panel-parsing','panel-loading','panel-results'].forEach(p=>{
+    const el=document.getElementById(p);
+    el.classList.toggle('hidden',p!==id);
+    el.classList.toggle('flex',p===id);
+  });
+}
+
+/* ── Manual form (TYPE MANUALLY path) ── */
+function showManualForm(){
+  // Show all fields for manual entry
+  document.getElementById('left-upload').classList.add('hidden');
+  document.getElementById('left-form').classList.remove('hidden');
+  document.getElementById('submit-card').classList.remove('hidden');
+  document.getElementById('cv-source-label').textContent='ENTER YOUR DETAILS';
+
+  // Show all-fields section, hide chips/missing
+  document.getElementById('all-fields').classList.remove('hidden');
+  document.getElementById('extracted-chips').classList.add('hidden');
+  document.getElementById('missing-fields').innerHTML='';
+
+  // Sync edit fields → hidden fields on input
+  _syncEditListeners();
+  setRight('panel-idle');
+}
+
+/* ── Toggle edit details ── */
+let _editOpen = false;
+function toggleAllFields(){
+  _editOpen = !_editOpen;
+  document.getElementById('all-fields').classList.toggle('hidden', !_editOpen);
+  document.getElementById('edit-toggle-icon').textContent = _editOpen ? 'expand_less' : 'expand_more';
+  document.getElementById('edit-toggle-label').textContent = _editOpen ? 'HIDE DETAILS' : 'EDIT EXTRACTED DETAILS';
+  if(_editOpen) _syncEditListeners();
+}
+
+/* Keep hidden inputs in sync with visible edit fields */
+function _syncEditListeners(){
+  const pairs = [
+    ['major-edit','major'],['university-edit','university'],
+    ['cgpa-edit','cgpa'],['year-edit','year_of_study'],
+    ['skills-edit','skills'],['country-edit','country_or_region'],
+    ['experience-edit','experience']
+  ];
+  pairs.forEach(([src,dst])=>{
+    const el = document.getElementById(src);
+    const hidden = document.getElementById(dst);
+    if(el && hidden){
+      // init value
+      if(hidden.value && !el.value) el.value = hidden.value;
+      el.oninput = ()=>{ hidden.value = el.value; };
+    }
+  });
+}
+
+function resetToUpload(){
+  document.getElementById('left-form').classList.add('hidden');
+  document.getElementById('left-upload').classList.remove('hidden');
+  document.getElementById('submit-card').classList.add('hidden');
+  document.getElementById('cv-file-input').value='';
+  document.getElementById('roast-form').reset();
+  document.getElementById('form-error').classList.add('hidden');
+  document.getElementById('extracted-chips').innerHTML='';
+  document.getElementById('missing-fields').innerHTML='';
+  document.getElementById('all-fields').classList.add('hidden');
+  _editOpen=false;
+  // Exit results mode
+  document.getElementById('page-tool').classList.remove('results-mode');
+  setRight('panel-idle');
+}
+
+function fullReset(){
+  resetToUpload();
+}
+
+/* ── Drag-and-drop ── */
+function dragOver(e){ e.preventDefault(); document.getElementById('drop-zone').classList.add('drop-zone-active'); }
+function dragLeave(e){ document.getElementById('drop-zone').classList.remove('drop-zone-active'); }
+function dropFile(e){
+  e.preventDefault(); dragLeave(e);
+  const file=e.dataTransfer.files[0];
+  if(file) handleFile(file);
+}
+document.getElementById('cv-file-input').addEventListener('change',e=>{
+  if(e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+/* ── PDF upload & smart form ── */
+async function handleFile(file){
+  if(!file.name.toLowerCase().endsWith('.pdf')){
+    alert('Please upload a PDF file.'); return;
+  }
+  setRight('panel-parsing');
+  const fd=new FormData();
+  fd.append('file',file);
+
+  // 45-second timeout — Groq can be slow on large CVs
+  const ctrl=new AbortController();
+  const timer=setTimeout(()=>ctrl.abort(),45000);
+
+  try{
+    const res=await fetch('/api/parse-cv',{method:'POST',body:fd,signal:ctrl.signal});
+    clearTimeout(timer);
+    const data=await res.json();
+    if(data.error){
+      setRight('panel-idle');
+      alert('CV parsing: '+data.error+'\n\nFilling form manually instead.');
+      showManualForm(); return;
+    }
+    _buildSmartForm(data.profile||{});
+    document.getElementById('left-upload').classList.add('hidden');
+    document.getElementById('left-form').classList.remove('hidden');
+    document.getElementById('submit-card').classList.remove('hidden');
+    document.getElementById('cv-source-label').textContent='CV SCANNED ✓';
+    setRight('panel-idle');
+  }catch(err){
+    clearTimeout(timer);
+    setRight('panel-idle');
+    const msg = err.name==='AbortError'
+      ? 'CV scan timed out (>45s). Check your GROQ_API_KEY and server logs, then fill manually.'
+      : 'Upload failed: '+err.message;
+    alert(msg);
+    showManualForm();
+  }
+}
+
+function _buildSmartForm(p){
+  // Populate hidden inputs
+  const sv=(id,v)=>{ const el=document.getElementById(id); if(el) el.value=v||''; };
+  sv('major', p.major||'');
+  sv('university', p.university||'');
+  sv('cgpa', p.cgpa!=null?p.cgpa:'');
+  sv('year_of_study', p.year_of_study||'');
+  sv('skills', (p.skills||[]).join(', '));
+  sv('experience', p.experience||'');
+  sv('country_or_region', p.country_or_region||'');
+
+  // Populate edit fields too
+  const se=(id,v)=>{ const el=document.getElementById(id); if(el) el.value=v||''; };
+  se('major-edit', p.major||'');
+  se('university-edit', p.university||'');
+  se('cgpa-edit', p.cgpa!=null?p.cgpa:'');
+  se('year-edit', p.year_of_study||'');
+  se('skills-edit', (p.skills||[]).join(', '));
+  se('experience-edit', p.experience||'');
+  se('country-edit', p.country_or_region||'');
+
+  // Build extracted chips
+  const chips = [];
+  if(p.major) chips.push({icon:'school', label: p.major});
+  if(p.university) chips.push({icon:'location_city', label: p.university});
+  if(p.cgpa!=null) chips.push({icon:'grade', label:'CGPA '+p.cgpa});
+  if(p.year_of_study) chips.push({icon:'calendar_today', label:'Year '+p.year_of_study});
+  if(p.country_or_region) chips.push({icon:'public', label: p.country_or_region});
+  const skillList = p.skills||[];
+  skillList.slice(0,4).forEach(s=>chips.push({icon:'code', label:s}));
+  if(skillList.length>4) chips.push({icon:'more_horiz', label:`+${skillList.length-4} more`});
+
+  const chipsWrap = document.getElementById('extracted-chips');
+  chipsWrap.classList.remove('hidden');
+  chipsWrap.innerHTML = chips.length
+    ? chips.map(c=>`<span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border:1px solid #00dbe9;background:#001a1c;font-family:'Space Grotesk';font-size:11px;font-weight:700;color:#00dbe9">
+        <span class="material-symbols-outlined" style="font-size:12px;font-variation-settings:'FILL' 1">${c.icon}</span>${c.label}</span>`).join('')
+    : '<span style="font-family:\'Space Grotesk\';font-size:11px;color:#57404c">Nothing extracted — fill in below</span>';
+
+  // Show missing required fields inline
+  const missing = [];
+  if(!p.major) missing.push({id:'major-missing', label:'MAJOR *', placeholder:'Computer Science', key:'major'});
+  if(!p.university) missing.push({id:'university-missing', label:'UNIVERSITY *', placeholder:'NUS, IIT…', key:'university'});
+
+  const mf = document.getElementById('missing-fields');
+  mf.innerHTML = missing.length ? missing.map(f=>`
+    <div>
+      <label class="block font-label-caps text-[11px] mb-1" style="color:#ffb4ab">⚠ ${f.label} NOT FOUND IN CV</label>
+      <input id="${f.id}" type="text" placeholder="${f.placeholder}" oninput="document.getElementById('${f.key}').value=this.value" style="border-color:#ffb4ab"/>
+    </div>`).join('') : '';
+
+  _syncEditListeners();
+}
+
+function setVal(id,v){
+  const el=document.getElementById(id);
+  if(el) el.value=v||'';
+}
+
+/* ── Loading messages ── */
+const MSGS=[
+  'PULLING RECEIPTS ON YOUR APPLICATIONS...',
+  'FIRECRAWL SNITCHING ON YOUR TARGET COMPANIES...',
+  'JUDGING YOUR CGPA RIGHT NOW...',
+  'CROSS-REFERENCING YOUR DREAMS WITH REALITY...',
+  'CALCULATING PROBABILITY OF REJECTION...',
+  'ALMOST DONE — PREPARING YOUR ROAST...',
+];
+let msgTimer=null,msgIdx=0;
+function startMsgs(companies){
+  msgIdx=0;
+  document.getElementById('loading-msg').textContent=MSGS[0];
+  msgTimer=setInterval(()=>{ msgIdx=(msgIdx+1)%MSGS.length; document.getElementById('loading-msg').textContent=MSGS[msgIdx]; },2400);
+  document.getElementById('loading-companies').innerHTML=companies.map(c=>`
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="material-symbols-outlined spin" style="font-size:14px;color:#ffaedb">refresh</span>
+      <span style="font-family:'Space Grotesk';font-size:12px;font-weight:700;color:#e5e2e1">${c}</span>
+    </div>`).join('');
+  setRight('panel-loading');
+}
+function stopMsgs(){ clearInterval(msgTimer); msgTimer=null; }
+
+/* ── Matches page population ── */
+function _populateMatchesPage(recs, recHtml){
+  const empty=document.getElementById('matches-empty');
+  const grid=document.getElementById('matches-grid');
+  const back=document.getElementById('matches-back');
+  if(!grid) return;
+  if(!recs||!recs.length){ empty.classList.remove('hidden'); grid.classList.add('hidden'); return; }
+
+  const tierStyle={
+    reach:  {bg:'#3a0030',border:'#ff3ac6',badge:'#ff3ac6',badgeTxt:'#3a0030',label:'REACH',  desc:'Stretch goal — get grinding'},
+    target: {bg:'#003033',border:'#00dbe9',badge:'#00dbe9',badgeTxt:'#003033',label:'TARGET', desc:'Realistic shot — apply now'},
+    safety: {bg:'#1a2000',border:'#aaffdd',badge:'#aaffdd',badgeTxt:'#001a0f',label:'SAFETY', desc:'High confidence — lock it in'},
+  };
+
+  // Group by tier
+  const groups={reach:[],target:[],safety:[]};
+  recs.forEach(r=>{ const k=(r.tier||'target').toLowerCase(); if(groups[k]) groups[k].push(r); });
+
+  let html='';
+  ['reach','target','safety'].forEach(tier=>{
+    if(!groups[tier].length) return;
+    const t=tierStyle[tier];
+    html+=`<div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span style="padding:3px 10px;background:${t.badge};color:${t.badgeTxt};font-family:'Space Grotesk';font-size:10px;font-weight:700;letter-spacing:.08em">${t.label}</span>
+        <span style="font-family:'Plus Jakarta Sans';font-size:12px;color:#a68997">${t.desc}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${groups[tier].map(r=>`
+        <div style="display:flex;align-items:flex-start;gap:16px;background:${t.bg};border:3px solid ${t.border};padding:16px 18px;box-shadow:4px 4px 0 0 #000">
+          <div style="flex-shrink:0;width:42px;height:42px;border:2px solid ${t.border};display:flex;align-items:center;justify-content:center;background:#131313">
+            <span class="material-symbols-outlined" style="font-size:20px;color:${t.badge};font-variation-settings:'FILL' 1">business</span>
+          </div>
+          <div style="flex:1;min-width:0">
+            <p style="font-family:Epilogue;font-weight:800;font-size:18px;color:#e5e2e1;margin-bottom:4px">${r.name}</p>
+            <p style="font-size:13px;color:#a68997;line-height:1.5">${r.reason}</p>
+          </div>
+          <div style="flex-shrink:0;padding:4px 10px;border:2px solid ${t.border};font-family:'Space Grotesk';font-size:9px;font-weight:700;color:${t.badge};letter-spacing:.06em;white-space:nowrap">${t.label}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  });
+
+  empty.classList.add('hidden');
+  grid.innerHTML=html;
+  grid.classList.remove('hidden');
+  back.classList.remove('hidden');
+}
+
+/* ── Company Suggestions ── */
+async function suggestCompanies(){
+  const btn=document.getElementById('suggest-btn');
+  const lbl=document.getElementById('suggest-label');
+  const ico=document.getElementById('suggest-icon');
+  const panel=document.getElementById('suggestions-panel');
+  const chips=document.getElementById('suggestions-chips');
+
+  // Collect current profile from hidden inputs or edit fields
+  const gv=id=>(document.getElementById(id)||{value:''}).value.trim();
+  const payload={
+    major: gv('major') || gv('major-edit'),
+    university: gv('university') || gv('university-edit'),
+    cgpa: parseFloat(gv('cgpa')||gv('cgpa-edit'))||null,
+    year_of_study: parseInt(gv('year_of_study')||gv('year-edit'))||null,
+    skills: (gv('skills')||gv('skills-edit')).split(',').map(s=>s.trim()).filter(Boolean),
+    country_or_region: gv('country_or_region')||gv('country-edit'),
+    experience: gv('experience')||gv('experience-edit'),
+  };
+
+  // Show loading state
+  lbl.textContent='THINKING...'; ico.textContent='refresh';
+  ico.classList.add('spin'); btn.disabled=true;
+  panel.classList.add('hidden');
+
+  try{
+    const res=await fetch('/api/suggest-companies',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('Server '+res.status);
+    const data=await res.json();
+    const suggestions=data.suggestions||[];
+
+    if(!suggestions.length){ lbl.textContent='NONE FOUND'; return; }
+
+    // Render clickable chips
+    chips.innerHTML=suggestions.map(s=>`
+      <button type="button" onclick="addCompany('${s.name.replace(/'/g,"\\'")}',this)"
+        title="${(s.reason||'').replace(/"/g,'&quot;')}"
+        style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border:2px solid #00dbe9;background:#001a1c;font-family:'Space Grotesk';font-size:11px;font-weight:700;color:#00dbe9;cursor:pointer;transition:all .15s"
+        onmouseover="this.style.background='#00dbe9';this.style.color='#003033'"
+        onmouseout="if(!this.dataset.added){this.style.background='#001a1c';this.style.color='#00dbe9';}">
+        <span class="material-symbols-outlined" style="font-size:11px;font-variation-settings:'FILL' 1">add_circle</span>
+        ${s.name}
+        ${s.tier?`<span style="font-size:9px;opacity:.6;margin-left:2px">${s.tier}</span>`:''}
+      </button>`).join('');
+    panel.classList.remove('hidden');
+    lbl.textContent='REFRESH'; ico.textContent='refresh';
+  }catch(err){
+    lbl.textContent='RETRY'; ico.textContent='error';
+    alert('Suggestions failed: '+err.message);
+  }finally{
+    ico.classList.remove('spin'); btn.disabled=false;
+  }
+}
+
+function addCompany(name, el){
+  const inp=document.getElementById('target_companies');
+  const existing=inp.value.split(',').map(s=>s.trim()).filter(Boolean);
+  if(!existing.includes(name)){
+    inp.value=existing.length ? existing.join(', ')+', '+name : name;
+  }
+  // Mark chip as added
+  el.dataset.added='1';
+  el.style.background='#aaffdd'; el.style.color='#001a0f';
+  el.style.borderColor='#aaffdd';
+  el.querySelector('.material-symbols-outlined').textContent='check_circle';
+}
+
+
+/* ── Submit ── */
+async function submitForm(){
+  // Sync edit fields back if open
+  _syncEditListeners();
+  const hiddenVal=id=>(document.getElementById(id)||{value:''}).value.trim();
+  const csv=id=>hiddenVal(id).split(',').map(s=>s.trim()).filter(Boolean);
+
+  // Prefer edit-field values if all-fields is open
+  const ef = !document.getElementById('all-fields').classList.contains('hidden');
+  const gv = (hiddenId, editId) => {
+    if(ef){ const e=document.getElementById(editId); if(e&&e.value.trim()) return e.value.trim(); }
+    return hiddenVal(hiddenId);
+  };
+
+  const major = gv('major','major-edit');
+  const univ  = gv('university','university-edit');
+
+  // Also check missing-field inputs
+  const majMissing = document.getElementById('major-missing');
+  const uniMissing = document.getElementById('university-missing');
+  const finalMajor = major || (majMissing&&majMissing.value.trim());
+  const finalUniv  = univ  || (uniMissing&&uniMissing.value.trim());
+
+  const companies = csv('target_companies');
+
+  if(!finalMajor||!finalUniv||!companies.length){
+    document.getElementById('form-error-msg').textContent='Major, university and at least one target company are required.';
+    document.getElementById('form-error').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('form-error').classList.add('hidden');
+
+  const skillsRaw = ef ? (document.getElementById('skills-edit')||{value:''}).value : hiddenVal('skills');
+  const countryRaw= ef ? (document.getElementById('country-edit')||{value:''}).value : hiddenVal('country_or_region');
+  const expRaw    = ef ? (document.getElementById('experience-edit')||{value:''}).value : hiddenVal('experience');
+  const cgpaRaw   = ef ? (document.getElementById('cgpa-edit')||{value:''}).value : hiddenVal('cgpa');
+  const yearRaw   = ef ? (document.getElementById('year-edit')||{value:''}).value : hiddenVal('year_of_study');
+
+  const payload={
+    major:finalMajor, university:finalUniv, target_companies:companies,
+    skills:skillsRaw.split(',').map(s=>s.trim()).filter(Boolean),
+    country_or_region:countryRaw, experience:expRaw
+  };
+  if(cgpaRaw) payload.cgpa=parseFloat(cgpaRaw);
+  if(yearRaw) payload.year_of_study=parseInt(yearRaw);
+
+  startMsgs(companies);
+  try{
+    const res=await fetch('/api/internship',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!res.ok) throw new Error('Server '+res.status);
+    stopMsgs();
+    renderResults(await res.json());
+  }catch(err){
+    stopMsgs();
+    setRight('panel-idle');
+    document.getElementById('form-error-msg').textContent='Request failed: '+err.message+'. Is the backend running?';
+    document.getElementById('form-error').classList.remove('hidden');
+  }
+}
+
+/* ── Render results — full-screen centered mode ── */
+function renderResults(data){
+  window._voiceScript = data.voice_script || '';
+  window._voiceAudioUrl = null;
+  const vBtn=document.getElementById('voice-btn');
+  const vLbl=document.getElementById('voice-label');
+  const vIco=document.getElementById('voice-icon');
+  if(vBtn){ vBtn.disabled=false; vBtn.style.opacity='1'; }
+  if(vLbl) vLbl.textContent='PLAY ROAST';
+  if(vIco) vIco.textContent='volume_up';
+
+  document.getElementById('page-tool').classList.add('results-mode');
+  const rp = document.getElementById('panel-results');
+  if(rp) rp.style.maxHeight = 'calc(100vh - 110px)';
+
+  const score = data.overall_readiness_score || 0;
+  const sNum  = document.getElementById('score-num');
+  const sBar  = document.getElementById('score-bar');
+  const sBadge= document.getElementById('score-badge');
+  let col, txt;
+  if(score >= 70){ col='#00dbe9'; txt='LEGITIMATE CANDIDATE'; }
+  else if(score >= 46){ col='#fdd400'; txt='FIXABLE'; }
+  else { col='#ff3ac6'; txt='START OVER'; }
+
+  if(sNum)  sNum.textContent = score;
+  if(sBar)  { sBar.style.width = score+'%'; sBar.style.background = col; }
+  if(sBadge){ sBadge.textContent = txt; sBadge.style.borderColor = col; sBadge.style.color = col; }
+
+  const honestEl = document.getElementById('honest-take');
+  if(honestEl) honestEl.textContent = data.honest_take || '';
+
+  // Company verdicts
+  const verdictsList = document.getElementById('verdicts-list');
+  if(verdictsList){
+    const verdictStyle = {
+      'Realistic': {bg:'#003033', border:'#00dbe9', color:'#7df4ff'},
+      'Reach':     {bg:'#3a3000', border:'#fdd400', color:'#fdd400'},
+      'Be honest with yourself': {bg:'#93000a', border:'#ff3ac6', color:'#ffdad6'},
+    };
+    verdictsList.innerHTML = (data.company_verdicts || []).map(v => {
+      const s = verdictStyle[v.verdict] || verdictStyle['Reach'];
+      const gaps = (v.skill_gaps || []).map(g =>
+        `<span style="background:#1c1b1b;border:1px solid #57404c;padding:2px 8px;font-size:11px;font-family:'Space Grotesk'">${g}</span>`
+      ).join('');
+      const bright = v.bright_spot ? `<div style="margin-top:8px;padding:8px 10px;background:#1a2a1a;border-left:3px solid #aaffdd;font-size:12px;color:#aaffdd">&#10024; ${v.bright_spot}</div>` : '';
+      const fix = v.one_fix ? `<div style="margin-top:8px;font-size:12px;color:#fdd400">&#128161; ${v.one_fix}</div>` : '';
+      return `<div style="background:${s.bg};border:3px solid ${s.border};padding:16px 18px;box-shadow:4px 4px 0 0 #000">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px">
+          <p style="font-family:Epilogue;font-weight:800;font-size:20px;color:#e5e2e1">${v.company}</p>
+          <span style="flex-shrink:0;padding:3px 10px;border:2px solid ${s.border};font-family:'Space Grotesk';font-size:10px;font-weight:700;color:${s.color};letter-spacing:.08em">${v.verdict.toUpperCase()}</span>
+        </div>
+        <p style="font-size:14px;color:#debecd;line-height:1.5">${v.reason}</p>
+        ${bright}
+        ${fix}
+        ${gaps ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">${gaps}</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  // Bright spots
+  const bsSection = document.getElementById('bright-spots-section');
+  const bsWrap    = document.getElementById('bright-spots-wrap');
+  if(bsWrap && data.bright_spots && data.bright_spots.length){
+    bsWrap.innerHTML = data.bright_spots.map(b =>
+      `<div style="padding:10px 14px;background:#1a2a1a;border-left:4px solid #aaffdd;font-size:14px;color:#aaffdd">&#10024; ${b}</div>`
+    ).join('');
+    if(bsSection) bsSection.classList.remove('hidden');
+  }
+
+  // Skill gaps
+  const gapsWrap = document.getElementById('gaps-wrap');
+  if(gapsWrap){
+    gapsWrap.innerHTML = (data.top_skill_gaps || []).map(g =>
+      `<span style="background:#1c1b1b;border:2px solid #57404c;padding:6px 14px;font-family:'Space Grotesk';font-size:12px;font-weight:700">${g}</span>`
+    ).join('');
+  }
+
+  // Tips
+  const tipsList = document.getElementById('tips-list');
+  if(tipsList){
+    tipsList.innerHTML = (data.tips || []).map((t,i) =>
+      `<div style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:#20201f;border-left:4px solid #ffaedb">
+        <span style="flex-shrink:0;font-family:Epilogue;font-weight:900;font-size:20px;color:#ffaedb">${i+1}</span>
+        <p style="font-size:14px;color:#e5e2e1;line-height:1.5">${t}</p>
+      </div>`
+    ).join('');
+  }
+
+  // Recommended companies
+  const recs = data.recommended_companies || [];
+  const recSection = document.getElementById('recommended-section');
+  const recList    = document.getElementById('recommended-list');
+  if(recList && recs.length){
+    const tierCol = { reach:'#ff3ac6', target:'#00dbe9', safety:'#aaffdd' };
+    recList.innerHTML = recs.map(r => {
+      const c = tierCol[(r.tier||'target').toLowerCase()] || '#00dbe9';
+      return `<div onclick="addCompany('${r.name.replace(/'/g,"\'")}')" style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#1c1b1b;border:2px solid #353535;cursor:pointer;transition:.15s" onmouseover="this.style.borderColor='${c}'" onmouseout="this.style.borderColor='#353535'">
+        <span style="flex-shrink:0;padding:2px 8px;border:2px solid ${c};font-family:'Space Grotesk';font-size:9px;font-weight:700;color:${c};letter-spacing:.06em">${(r.tier||'target').toUpperCase()}</span>
+        <span style="font-family:Epilogue;font-weight:800;font-size:16px;color:#e5e2e1;flex:1">${r.name}</span>
+        <span style="font-size:12px;color:#a68997;max-width:200px;text-align:right">${r.reason}</span>
+      </div>`;
+    }).join('');
+    if(recSection) recSection.classList.remove('hidden');
+    _populateMatchesPage(recs);
+  }
+
+  setRight('panel-results');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+async function playRoast(){
+  const script = window._voiceScript;
+  if(!script){ alert('No roast script available.'); return; }
+
+  const vBtn=document.getElementById('voice-btn');
+  const vLbl=document.getElementById('voice-label');
+  const vIco=document.getElementById('voice-icon');
+
+  // If audio is currently playing — stop it
+  if(window._currentAudio && !window._currentAudio.paused){
+    window._currentAudio.pause();
+    window._currentAudio.currentTime=0;
+    window._currentAudio=null;
+    if(vLbl) vLbl.textContent='PLAY ROAST';
+    if(vIco) vIco.textContent='volume_up';
+    return;
+  }
+
+  // If already fetched, just replay
+  if(window._voiceAudioUrl){
+    const audio=new Audio(window._voiceAudioUrl);
+    window._currentAudio=audio;
+    if(vLbl) vLbl.textContent='END ROAST';
+    if(vIco) vIco.textContent='stop_circle';
+    audio.play();
+    audio.onended=()=>{
+      window._currentAudio=null;
+      if(vLbl) vLbl.textContent='PLAY ROAST';
+      if(vIco) vIco.textContent='volume_up';
+    };
+    return;
+  }
+
+  if(vBtn) vBtn.disabled=true;
+  if(vLbl) vLbl.textContent='LOADING...';
+  if(vIco) vIco.textContent='hourglass_top';
+
+  try{
+    const res=await fetch('/api/speak',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({text:script})
+    });
+    if(!res.ok){ throw new Error('Server '+res.status); }
+    const blob=await res.blob();
+    const url=URL.createObjectURL(blob);
+    window._voiceAudioUrl=url;
+    const audio=new Audio(url);
+    window._currentAudio=audio;
+    if(vBtn) vBtn.disabled=false;
+    if(vLbl) vLbl.textContent='END ROAST';
+    if(vIco) vIco.textContent='stop_circle';
+    audio.play();
+    audio.onended=()=>{
+      window._currentAudio=null;
+      if(vLbl) vLbl.textContent='PLAY ROAST';
+      if(vIco) vIco.textContent='volume_up';
+    };
+  } catch(err){
+    if(vLbl) vLbl.textContent='TTS ERROR';
+    if(vIco) vIco.textContent='volume_off';
+    alert('Voice failed: '+err.message);
+    if(vBtn) vBtn.disabled=false;
+  }
+}
+</script>
+</body>
+</html>

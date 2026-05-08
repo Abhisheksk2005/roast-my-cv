@@ -1,0 +1,172 @@
+{
+  "save_roast_quote": {
+    "type": "client",
+    "name": "save_roast_quote",
+    "description": "Save the agent's best roast one-liner for the report card (from the roast segment only). Call this after Phase 4. After it returns, ask the user a follow-up question — don't leave the conversation hanging.",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "execution_mode": "immediate",
+    "assignments": [],
+    "expects_response": false,
+    "response_timeout_secs": 30,
+    "parameters": [
+      {
+        "id": "quote",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "The single best roast one-liner from the monologue just delivered — the line most likely to be screenshotted. Verbatim from Phase 3, as a short string. No session_id.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      }
+    ],
+    "dynamic_variables": {
+      "dynamic_variable_placeholders": {}
+    }
+  },
+  "research_internship": {
+    "type": "client",
+    "name": "research_internship",
+    "description": "Triggers internship research on the USER'S BACKEND (browser → API → Firecrawl + AI). You do not browse the web yourself. When this tool returns JSON with research_complete true, research is ALREADY DONE — start the roast immediately; never ask the user to confirm data loaded. The JSON includes company_verdicts (per-company verdict, reason, skill_gaps, one_fix), overall_readiness_score, top_skill_gaps, tips, and honest_take. Use ALL of these in the roast.",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "tool_error_handling_mode": "auto",
+    "execution_mode": "immediate",
+    "assignments": [],
+    "expects_response": false,
+    "response_timeout_secs": 300,
+    "parameters": [
+      {
+        "id": "major",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "The student's field of study or major as they stated it (e.g. Computer Science, Mechanical Engineering, Finance). Use their exact wording. Never invent a major they did not describe.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "university",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "The college or university name they said they attend. Use their wording. Do not make up a specific school name.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "targetCompanies",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Comma-separated list of companies the student said they are targeting for internships (e.g. Google, Stripe, a fintech startup). Use their exact words. At least one required.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": true
+      },
+      {
+        "id": "cgpa",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Their CGPA or GPA as a decimal number (e.g. 8.2 or 3.7). If not stated, empty string. Do not fabricate.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "yearOfStudy",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Their current year of study as a digit (1, 2, 3, or 4). Infer from what they said: 'second year' → 2, 'junior' → 3. If unknown, empty string.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "skills",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Comma-separated list of technical skills they mentioned (e.g. Python, React, SQL, Machine Learning). Only include what they actually said. Empty string if none mentioned.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "courses",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Comma-separated list of relevant courses or certifications they mentioned. Empty string if none.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "experience",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Any internship, project, or work experience they described, as a short summary. Empty string if none.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "languagesKnown",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Comma-separated list of programming or spoken languages they mentioned knowing. Empty string if none.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "countryOrRegion",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Where they study or want to intern if they said it (e.g. India, UK, US, Singapore). Empty string if unknown.",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      },
+      {
+        "id": "source",
+        "type": "string",
+        "value_type": "llm_prompt",
+        "description": "Always the literal word: voice",
+        "dynamic_variable": "",
+        "constant_value": "",
+        "enum": null,
+        "is_system_provided": false,
+        "required": false
+      }
+    ],
+    "dynamic_variables": {
+      "dynamic_variable_placeholders": {}
+    }
+  }
+}
