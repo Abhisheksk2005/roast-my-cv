@@ -1124,19 +1124,21 @@ async function playRoast(){
     if(vIco) vIco.textContent='volume_up';
     return;
   }
+  if(window.speechSynthesis && window.speechSynthesis.speaking){
+    window.speechSynthesis.cancel();
+    if(vLbl) vLbl.textContent='PLAY ROAST';
+    if(vIco) vIco.textContent='volume_up';
+    return;
+  }
 
-  // If already fetched, just replay
+  // If already fetched ElevenLabs audio, replay it
   if(window._voiceAudioUrl){
     const audio=new Audio(window._voiceAudioUrl);
     window._currentAudio=audio;
     if(vLbl) vLbl.textContent='END ROAST';
     if(vIco) vIco.textContent='stop_circle';
     audio.play();
-    audio.onended=()=>{
-      window._currentAudio=null;
-      if(vLbl) vLbl.textContent='PLAY ROAST';
-      if(vIco) vIco.textContent='volume_up';
-    };
+    audio.onended=()=>{ window._currentAudio=null; if(vLbl) vLbl.textContent='PLAY ROAST'; if(vIco) vIco.textContent='volume_up'; };
     return;
   }
 
@@ -1144,13 +1146,14 @@ async function playRoast(){
   if(vLbl) vLbl.textContent='LOADING...';
   if(vIco) vIco.textContent='hourglass_top';
 
+  // Try ElevenLabs first
   try{
     const res=await fetch('/api/speak',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({text:script})
     });
-    if(!res.ok){ throw new Error('Server '+res.status); }
+    if(!res.ok) throw new Error('elevenlabs_'+res.status);
     const blob=await res.blob();
     const url=URL.createObjectURL(blob);
     window._voiceAudioUrl=url;
@@ -1160,16 +1163,29 @@ async function playRoast(){
     if(vLbl) vLbl.textContent='END ROAST';
     if(vIco) vIco.textContent='stop_circle';
     audio.play();
-    audio.onended=()=>{
-      window._currentAudio=null;
-      if(vLbl) vLbl.textContent='PLAY ROAST';
-      if(vIco) vIco.textContent='volume_up';
-    };
+    audio.onended=()=>{ window._currentAudio=null; if(vLbl) vLbl.textContent='PLAY ROAST'; if(vIco) vIco.textContent='volume_up'; };
   } catch(err){
-    if(vLbl) vLbl.textContent='TTS ERROR';
-    if(vIco) vIco.textContent='volume_off';
-    alert('Voice failed: '+err.message);
-    if(vBtn) vBtn.disabled=false;
+    // ElevenLabs failed — fall back to browser Web Speech API
+    if(window.speechSynthesis){
+      if(vBtn) vBtn.disabled=false;
+      if(vLbl) vLbl.textContent='END ROAST';
+      if(vIco) vIco.textContent='stop_circle';
+      const utt=new SpeechSynthesisUtterance(script);
+      utt.rate=1.05; utt.pitch=1; utt.volume=1;
+      // Pick a good English voice if available
+      const voices=window.speechSynthesis.getVoices();
+      const pick=voices.find(v=>v.lang.startsWith('en')&&v.name.toLowerCase().includes('male'))
+                 ||voices.find(v=>v.lang.startsWith('en'))
+                 ||voices[0];
+      if(pick) utt.voice=pick;
+      utt.onend=()=>{ if(vLbl) vLbl.textContent='PLAY ROAST'; if(vIco) vIco.textContent='volume_up'; };
+      window.speechSynthesis.speak(utt);
+    } else {
+      if(vLbl) vLbl.textContent='TTS ERROR';
+      if(vIco) vIco.textContent='volume_off';
+      if(vBtn) vBtn.disabled=false;
+      alert('Voice not available on this device.');
+    }
   }
 }
 </script>
