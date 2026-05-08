@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔥 Roast My CV
+# Roast My CV
 
 ### AI-powered internship readiness tool — upload your CV, get roasted, know your shot.
 
@@ -28,12 +28,12 @@ Upload your CV PDF and get a brutally honest AI-powered assessment of your inter
 
 | Feature | Description |
 |---|---|
-| 📄 **CV Analysis** | Parses your PDF and extracts skills, experience, CGPA, and courses automatically |
-| 🏢 **Company Verdicts** | Rates each target company as *Realistic*, *Reach*, or *Be honest with yourself* |
-| 📊 **Readiness Score** | 0–100 score with a one-line honest take that hits different |
-| ✨ **Donald Says Apply Here** | Recommends 6 companies (2 reach / 3 target / 1 safety) based on your actual profile |
-| 🔊 **Voice Roast** | ElevenLabs AI voice reads your personalised roast out loud |
-| 🎯 **Matches Page** | All recommended companies grouped by tier in one place |
+| **CV Analysis** | Parses your PDF and extracts skills, experience, CGPA, and courses automatically |
+| **Company Verdicts** | Rates each target company as *Realistic*, *Reach*, or *Be honest with yourself* |
+| **Readiness Score** | 0–100 score with a one-line honest take that hits different |
+| **Donald Says Apply Here** | Recommends 6 companies (2 reach / 3 target / 1 safety) based on your actual profile |
+| **Voice Roast** | ElevenLabs AI voice reads your personalised roast out loud |
+| **Matches Page** | All recommended companies grouped by tier in one place |
 
 ---
 
@@ -105,7 +105,7 @@ Open `http://localhost:8000/static/internship.html`
 
 ## Live Demo
 
-🚀 **[roast-my-cv.onrender.com/static/internship.html](https://roast-my-cv.onrender.com/static/internship.html)**
+**[roast-my-cv.onrender.com/static/internship.html](https://roast-my-cv.onrender.com/static/internship.html)**
 
 > First load may take ~30 seconds (free tier cold start) — worth the wait.
 
