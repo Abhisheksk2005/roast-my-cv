@@ -173,7 +173,7 @@ async def _analyze_with_grok(prompt: str) -> dict | None:
             api_key=os.getenv("GROQ_API_KEY"),
             base_url="https://api.groq.com/openai/v1",
         )
-        model = (os.getenv("GROQ_MODEL") or "llama-3.3-70b-versatile").strip()
+        model = (os.getenv("GROQ_MODEL") or "openai/gpt-oss-120b").strip()
 
         response = await asyncio.to_thread(
             client.chat.completions.create,

@@ -491,10 +491,10 @@ async def parse_cv(file: UploadFile = File(...)):
             base_url="https://api.groq.com/openai/v1",
         )
         response = await client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=(os.getenv("GROQ_MODEL") or "openai/gpt-oss-120b").strip(),
             messages=[{"role": "user", "content": extraction_prompt}],
             temperature=0.1,
-            max_tokens=800,
+            max_tokens=2000,
         )
         raw = (response.choices[0].message.content or "").strip()
         if raw.startswith("```"):
@@ -502,6 +502,11 @@ async def parse_cv(file: UploadFile = File(...)):
             if raw.startswith("json"):
                 raw = raw[4:]
         raw = raw.strip().rstrip("`").strip()
+        # Reasoning models (e.g. gpt-oss) can prepend prose before the JSON object.
+        if not raw.startswith("{"):
+            start, end = raw.find("{"), raw.rfind("}")
+            if start != -1 and end > start:
+                raw = raw[start:end + 1]
         profile_data = json.loads(raw)
     except json.JSONDecodeError as e:
         logger.warning("cv_parse_json_error", error=str(e))
@@ -637,10 +642,10 @@ Respond ONLY with valid JSON — no explanation, no markdown:
                 "https://api.groq.com/openai/v1/chat/completions",
                 headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
                 json={
-                    "model": "llama-3.3-70b-versatile",
+                    "model": (os.getenv("GROQ_MODEL") or "openai/gpt-oss-120b").strip(),
                     "messages": [{"role": "user", "content": prompt}],
                     "temperature": 0.6,
-                    "max_tokens": 600,
+                    "max_tokens": 2000,
                     "response_format": {"type": "json_object"},
                 },
             )
