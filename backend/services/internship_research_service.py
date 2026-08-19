@@ -21,6 +21,12 @@ logger = structlog.get_logger(__name__)
 
 FIRECRAWL_SEARCH_TIMEOUT_MS = int(os.getenv("FIRECRAWL_SEARCH_TIMEOUT_MS", "15000"))
 
+# Groq's free tier bills prompt + completion against one 8000 tokens/minute budget,
+# so scraped context has to stay on a leash or the analysis call 413s.
+SNIPPET_CHARS = int(os.getenv("FIRECRAWL_SNIPPET_CHARS", "400"))
+COMPANY_CONTEXT_CHARS = int(os.getenv("FIRECRAWL_COMPANY_CHARS", "1200"))
+PROFILE_CONTEXT_CHARS = int(os.getenv("FIRECRAWL_PROFILE_CHARS", "800"))
+
 
 # ── Search ─────────────────────────────────────────────────────────────────────
 
@@ -47,16 +53,39 @@ def _build_profile_queries(profile: InternshipProfile) -> list[str]:
 async def _search_one(fc: FirecrawlApp, query: str) -> str:
     """Run one Firecrawl search and return joined snippets."""
     try:
-        results = await asyncio.to_thread(
-            fc.search,
-            query,
-            params={"limit": 3, "timeout": FIRECRAWL_SEARCH_TIMEOUT_MS},
-        )
+        try:
+            # firecrawl-py v2+ (repo pins 4.19.0): search(query, limit=..., timeout=...)
+            results = await asyncio.to_thread(
+                fc.search, query, limit=3, timeout=FIRECRAWL_SEARCH_TIMEOUT_MS
+            )
+        except TypeError:
+            # firecrawl-py v1 took everything in a params dict.
+            results = await asyncio.to_thread(
+                fc.search,
+                query,
+                params={"limit": 3, "timeout": FIRECRAWL_SEARCH_TIMEOUT_MS},
+            )
+
+        # v4 returns hits under "web"; v1 returned them under "data".
+        if isinstance(results, dict):
+            items = results.get("web") or results.get("data") or []
+        else:
+            items = getattr(results, "web", None) or getattr(results, "data", None) or []
+
         snippets = []
-        for r in (results.get("data") or []):
-            text = (r.get("markdown") or r.get("description") or "").strip()
+        for r in items:
+            if isinstance(r, dict):
+                text = r.get("markdown") or r.get("description") or r.get("snippet") or ""
+            else:
+                text = (
+                    getattr(r, "markdown", None)
+                    or getattr(r, "description", None)
+                    or getattr(r, "snippet", None)
+                    or ""
+                )
+            text = (text or "").strip()
             if text:
-                snippets.append(text[:600])
+                snippets.append(text[:SNIPPET_CHARS])
         return "\n---\n".join(snippets) if snippets else ""
     except Exception as e:
         logger.warning("firecrawl_search_failed", query=query[:60], error=str(e))
@@ -175,12 +204,27 @@ async def _analyze_with_grok(prompt: str) -> dict | None:
             base_url="https://api.groq.com/openai/v1",
         )
 
+        # Groq bills prompt + max_tokens against ONE tokens-per-minute budget
+        # (8000 TPM for gpt-oss-120b on the free on_demand tier), so a fixed
+        # max_tokens returns 413 as soon as the prompt grows. Size the output
+        # budget to whatever is left instead.
+        tpm_budget = int(os.getenv("GROQ_TPM_BUDGET", "8000"))
+        est_prompt_tokens = len(prompt) // 4 + 200
+        max_out = min(
+            int(os.getenv("GROQ_MAX_TOKENS", "6000")),
+            tpm_budget - est_prompt_tokens - 300,  # safety margin
+        )
+        if max_out < 1200:
+            logger.warning(
+                "groq_prompt_near_tpm_limit",
+                est_prompt_tokens=est_prompt_tokens,
+                computed_max_out=max_out,
+            )
+            max_out = 1200
+
         kwargs = {
             "model": model,
-            # This prompt asks for verdicts + a ~400 word voice_script + 6 company
-            # recommendations. That is well over 2000 tokens of JSON on its own, and on
-            # reasoning models the thinking tokens come out of the same budget.
-            "max_tokens": int(os.getenv("GROQ_MAX_TOKENS", "8000")),
+            "max_tokens": max_out,
             "temperature": 0.3,
             "messages": [{"role": "user", "content": prompt}],
             "response_format": {"type": "json_object"},
@@ -244,7 +288,9 @@ async def run_internship_research(profile: InternshipProfile) -> dict:
         all_queries.extend(queries)
         if fc:
             results = await asyncio.gather(*[_search_one(fc, q) for q in queries])
-            company_snippets[company] = "\n---\n".join(r for r in results if r)
+            company_snippets[company] = "\n---\n".join(
+                r for r in results if r
+            )[:COMPANY_CONTEXT_CHARS]
         else:
             company_snippets[company] = ""
 
@@ -253,7 +299,9 @@ async def run_internship_research(profile: InternshipProfile) -> dict:
     all_queries.extend(profile_queries)
     if fc:
         profile_results = await asyncio.gather(*[_search_one(fc, q) for q in profile_queries])
-        profile_snippets = "\n---\n".join(r for r in profile_results if r)
+        profile_snippets = "\n---\n".join(
+            r for r in profile_results if r
+        )[:PROFILE_CONTEXT_CHARS]
     else:
         profile_snippets = ""
 
