@@ -167,30 +167,58 @@ Respond ONLY with valid JSON:
 
 async def _analyze_with_grok(prompt: str) -> dict | None:
     """Send the prompt to Groq and parse the JSON response."""
+    model = (os.getenv("GROQ_MODEL") or "openai/gpt-oss-120b").strip()
     try:
         from openai import OpenAI
         client = OpenAI(
             api_key=os.getenv("GROQ_API_KEY"),
             base_url="https://api.groq.com/openai/v1",
         )
-        model = (os.getenv("GROQ_MODEL") or "openai/gpt-oss-120b").strip()
 
-        response = await asyncio.to_thread(
-            client.chat.completions.create,
-            model=model,
-            max_tokens=2000,
-            temperature=0.3,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        raw = response.choices[0].message.content.strip()
+        kwargs = {
+            "model": model,
+            # This prompt asks for verdicts + a ~400 word voice_script + 6 company
+            # recommendations. That is well over 2000 tokens of JSON on its own, and on
+            # reasoning models the thinking tokens come out of the same budget.
+            "max_tokens": int(os.getenv("GROQ_MAX_TOKENS", "8000")),
+            "temperature": 0.3,
+            "messages": [{"role": "user", "content": prompt}],
+            "response_format": {"type": "json_object"},
+        }
+        # gpt-oss reasons before answering; keep the budget on the answer.
+        if "gpt-oss" in model:
+            kwargs["reasoning_effort"] = "low"
+
+        response = await asyncio.to_thread(client.chat.completions.create, **kwargs)
+        choice = response.choices[0]
+        raw = (choice.message.content or "").strip()
+        if not raw:
+            logger.error(
+                "grok_empty_content",
+                model=model,
+                finish_reason=getattr(choice, "finish_reason", None),
+            )
+            return None
+
         # Strip markdown code fences if present
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
                 raw = raw[4:]
+        raw = raw.strip().rstrip("`").strip()
+        # Reasoning models can prepend prose before the JSON object.
+        if not raw.startswith("{"):
+            start, end = raw.find("{"), raw.rfind("}")
+            if start != -1 and end > start:
+                raw = raw[start:end + 1]
         return json.loads(raw)
     except Exception as e:
-        logger.error("grok_analysis_failed", error=str(e))
+        logger.error(
+            "grok_analysis_failed",
+            model=model,
+            error_type=type(e).__name__,
+            error=str(e)[:500],
+        )
         return None
 
 
